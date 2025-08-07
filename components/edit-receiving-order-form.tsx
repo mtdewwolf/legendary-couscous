@@ -20,7 +20,7 @@ interface EditReceivingOrderFormProps {
       received: number
     }>
   }
-  onSave: (order: any) => void
+  onSave: (order: typeof order) => void
   onCancel: () => void
 }
 
@@ -44,7 +44,7 @@ export function EditReceivingOrderForm({ order, onSave, onCancel }: EditReceivin
     })
   }
 
-  const updateItem = (index: number, field: string, value: any) => {
+  const updateItem = (index: number, field: string, value: string | number) => {
     const updatedItems = [...formData.items]
     updatedItems[index] = { ...updatedItems[index], [field]: value }
     setFormData({ ...formData, items: updatedItems })

@@ -19,7 +19,7 @@ interface EditItemFormProps {
     category: string
   }
   vendors: string[]
-  onSave: (item: any) => void
+  onSave: (item: typeof item) => void
   onCancel: () => void
 }
 

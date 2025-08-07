@@ -98,7 +98,7 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">${dashboardStats.monthlySpend.toLocaleString()}</div>
-            <p className="text-xs text-muted-foreground">This month's purchases</p>
+            <p className="text-xs text-muted-foreground">This month&apos;s purchases</p>
           </CardContent>
         </Card>
 

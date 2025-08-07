@@ -5,7 +5,7 @@ import { Plus, Search, Phone, Mail, MapPin, Edit, Trash2, Eye } from 'lucide-rea
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
@@ -67,7 +67,7 @@ const vendors = [
   },
   {
     id: 5,
-    name: "Nature's Best",
+            name: "Nature&apos;s Best",
     contactPerson: "David Brown",
     email: "david@naturesbest.com",
     phone: "(555) 567-8901",
@@ -350,7 +350,7 @@ export default function VendorsPage() {
               </div>
               <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
                 <p className="text-sm text-yellow-800">
-                  ⚠️ Deleting this vendor will not affect existing purchase orders, but you won't be able to create new orders for this vendor.
+                  ⚠️ Deleting this vendor will not affect existing purchase orders, but you won&apos;t be able to create new orders for this vendor.
                 </p>
               </div>
             </div>
@@ -370,10 +370,10 @@ export default function VendorsPage() {
 }
 
 // EditVendorForm component (replace with your actual implementation)
-function EditVendorForm({ vendor, onSave, onCancel }: { vendor: any, onSave: any, onCancel: any }) {
+function EditVendorForm({ vendor, onSave, onCancel }: { vendor: typeof vendors[0], onSave: (vendor: typeof vendors[0]) => void, onCancel: () => void }) {
   const [editedVendor, setEditedVendor] = useState({ ...vendor });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setEditedVendor((prev: typeof vendors[0]) => ({ ...prev, [name]: value }));
   };

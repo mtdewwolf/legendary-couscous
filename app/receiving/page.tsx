@@ -1,13 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import { Scan, Package, CheckCircle, AlertCircle, Plus, Edit, Trash2 } from 'lucide-react'
+import { Scan, CheckCircle, Plus, Edit, Trash2 } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+
 import { BarcodeScanner } from "@/components/barcode-scanner"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
@@ -40,7 +40,7 @@ const pendingOrders = [
 export default function ReceivingPage() {
   const [selectedOrder, setSelectedOrder] = useState<string>("")
   const [isScannerOpen, setIsScannerOpen] = useState(false)
-  const [receivingItems, setReceivingItems] = useState<any[]>([])
+  const [receivingItems, setReceivingItems] = useState<Array<{barcode: string, receivedQuantity: number, orderNumber?: string, name?: string, expected?: number}>>([])
   const [manualQuantity, setManualQuantity] = useState("")
 
   // Add these state variables after the existing useState declarations
@@ -154,7 +154,7 @@ export default function ReceivingPage() {
           <div className="flex justify-between items-center">
             <div>
               <CardTitle>Select Purchase Order</CardTitle>
-              <CardDescription>Choose the purchase order you're receiving</CardDescription>
+              <CardDescription>Choose the purchase order you&apos;re receiving</CardDescription>
             </div>
             <div className="flex gap-2">
               <Button

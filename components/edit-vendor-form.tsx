@@ -20,7 +20,7 @@ interface EditVendorFormProps {
     totalSpent: number
     notes: string
   }
-  onSave: (vendor: any) => void
+  onSave: (vendor: typeof vendor) => void
   onCancel: () => void
 }
 

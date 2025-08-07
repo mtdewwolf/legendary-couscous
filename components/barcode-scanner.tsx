@@ -56,7 +56,7 @@ export function BarcodeScanner({ isOpen, onClose, onScan, mode }: BarcodeScanner
         if (videoDevices.length > 0) {
           setSelectedCamera(videoDevices[0].deviceId)
         }
-      } catch (err) {
+      } catch {
         setError("Unable to access camera devices")
       }
     }
@@ -93,9 +93,8 @@ export function BarcodeScanner({ isOpen, onClose, onScan, mode }: BarcodeScanner
       setHasFlash('torch' in capabilities)
       
       setIsScanning(true)
-    } catch (err) {
+    } catch {
       setError("Unable to access camera. Please ensure camera permissions are granted.")
-      console.error("Camera error:", err)
     }
   }
 
@@ -115,11 +114,11 @@ export function BarcodeScanner({ isOpen, onClose, onScan, mode }: BarcodeScanner
       const track = streamRef.current.getVideoTracks()[0]
       try {
         await track.applyConstraints({
-          advanced: [{ torch: !flashOn } as any]
+          advanced: [{ torch: !flashOn } as MediaTrackConstraints]
         })
         setFlashOn(!flashOn)
-      } catch (err) {
-        console.error("Flash toggle error:", err)
+      } catch {
+        console.error("Flash toggle error")
       }
     }
   }
@@ -160,7 +159,7 @@ export function BarcodeScanner({ isOpen, onClose, onScan, mode }: BarcodeScanner
     }
 
     detectBarcode()
-  }, [isScanning])
+  }, [isScanning, handleBarcodeDetected])
 
   const handleBarcodeDetected = (barcode: string) => {
     stopCamera()

@@ -168,12 +168,7 @@ export default function InventoryPage() {
     setEditingItem(null)
   }
 
-  const handleAddItem = (newItem: Omit<typeof inventoryItems[0], 'id'>) => {
-    const id = Math.max(...items.map(i => i.id)) + 1
-    setItems([...items, { ...newItem, id }])
-    setIsAddDialogOpen(false)
-    setScannedBarcode("")
-  }
+
 
   return (
     <div className="space-y-6">

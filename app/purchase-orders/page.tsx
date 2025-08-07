@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Plus, Search, Eye, Edit, Trash2, Calendar } from 'lucide-react'
+import { Plus, Search, Eye, Edit, Trash2 } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -415,7 +415,7 @@ const EditOrderForm: React.FC<EditOrderFormProps> = ({ order, vendors, onSave, o
     setEditedOrder(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleItemChange = (index: number, field: string, value: any) => {
+  const handleItemChange = (index: number, field: string, value: string | number) => {
     const updatedItems = [...editedOrder.items];
     updatedItems[index] = { ...updatedItems[index], [field]: value };
     setEditedOrder(prev => ({ ...prev, items: updatedItems }));
@@ -448,7 +448,7 @@ const EditOrderForm: React.FC<EditOrderFormProps> = ({ order, vendors, onSave, o
       <div className="grid grid-cols-2 gap-4">
         <div className="grid gap-2">
           <Label htmlFor="vendor">Vendor</Label>
-          <Select value={editedOrder.vendor} onValueChange={(value) => handleInputChange({ target: { name: 'vendor', value } } as any)}>
+          <Select value={editedOrder.vendor} onValueChange={(value) => handleInputChange({ target: { name: 'vendor', value } } as React.ChangeEvent<HTMLInputElement>)}>
             <SelectTrigger>
               <SelectValue placeholder="Select vendor" />
             </SelectTrigger>
